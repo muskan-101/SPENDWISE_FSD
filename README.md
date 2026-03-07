@@ -1,16 +1,159 @@
-# React + Vite
+# 💰 SpendWise – Smart Budget Manager for University Clubs
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Overview
 
-Currently, two official plugins are available:
+SpendWise is a web application designed to help **university clubs manage their budgets, track expenses, and maintain financial transparency**.
+It provides a simple and intuitive interface where club members can monitor spending, organize funds, and avoid exceeding allocated budgets.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project was developed as part of **Artimas**, focusing on solving real financial management problems faced by student organizations.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚩 Problem Statement
 
-## Expanding the ESLint configuration
+University clubs often face challenges such as:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* Poor tracking of expenses
+* Lack of transparency in spending
+* Difficulty managing budgets across multiple events
+* Manual tracking using spreadsheets
+
+SpendWise solves these issues by providing a **centralized digital budget tracking system**.
+
+---
+
+##  Features
+
+### 🧾 Expense Tracking
+
+* Record and monitor club expenses
+* Categorize spending for better analysis
+
+### 📊 Budget Management
+
+* Set a fixed budget for events or activities
+* Track remaining funds in real time
+
+### 📈 Financial Transparency
+
+* Members can view how funds are being used
+* Helps maintain accountability within the club
+
+### 🎯 User-Friendly Interface
+
+* Simple dashboard
+* Clean and responsive design
+* Easy navigation
+
+### 🧩 Modular Components
+
+The application is built using reusable React components such as:
+
+* Navbar
+* Landing Page
+* Features Section
+* Footer
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+
+* React.js
+* HTML5
+* CSS3
+* JavaScript
+
+**Build Tool**
+
+* Vite
+
+**Version Control**
+
+* Git & GitHub
+
+---
+
+## 🏗️ Project Structure
+
+```
+SPENDWISE
+│
+├── public
+│
+├── src
+│   ├── components
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── Features.jsx
+│   │   └── Footer.jsx
+│   │
+│   ├── App.jsx
+│   ├── App.css
+│   ├── main.jsx
+│   └── index.css
+│
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repository
+
+```
+git clone https://github.com/muskan-101/SpendWise.git
+```
+
+### 2️⃣ Navigate to the project folder
+
+```
+cd SpendWise
+```
+
+### 3️⃣ Install dependencies
+
+```
+npm install
+```
+
+### 4️⃣ Run the development server
+
+```
+npm run dev
+```
+
+The application will start on:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🎯 Future Improvements
+
+* User authentication for club members
+* Expense analytics and visual charts
+* Event-wise budget tracking
+* Integration with payment systems
+* AI-based spending insights
+
+---
+
+## 👩‍💻 Contributors
+
+* **Muskan Thakur**
+* **Arya Dhumal**
+  PCCOE Pune
+  GitHub: https://github.com/muskan-101
+
+---
+
+## 📄 License
+
+This project is developed for **educational and university use**.
