@@ -1,0 +1,31 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 60px;
+  background:#3B70F7;
+}
+
+.logo-section{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-box{
+  width:42px;
+  height:42px;
+  background:#2f4b8f;
+  border-radius:10px;
+}
+
+.nav-links a{
+  margin-left:30px;
+  text-decoration:none;
+  font-weight:500;
+  color:whitesmoke;
+}
+
+.nav-links a:hover{
+  color:#3BC2F7;
+}
