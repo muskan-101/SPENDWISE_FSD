@@ -1,28 +1,29 @@
-.signup-container {
+.login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
+    /* Adjust based on navbar height */
     background: #cfe0ea;
     padding: 40px 20px;
     font-family: "Poppins", sans-serif;
 }
 
-.signup-card {
+.login-card {
     background: white;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
 }
 
-.signup-header {
+.login-header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.signup-header .logo-section {
+.login-header .logo-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,14 +31,14 @@
     margin-bottom: 15px;
 }
 
-.signup-header .logo-box {
+.login-header .logo-box {
     width: 42px;
     height: 42px;
     background: #2f4b8f;
     border-radius: 10px;
 }
 
-.signup-header h2 {
+.login-header h2 {
     color: #1d2b3a;
     margin: 0;
     font-size: 24px;
@@ -49,16 +50,16 @@
     margin-top: 10px;
 }
 
-.signup-form {
+.login-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .form-group label {
@@ -90,7 +91,7 @@
     font-size: 12px;
 }
 
-.signup-btn {
+.login-btn {
     padding: 14px;
     border: none;
     background: #314fa3;
@@ -100,15 +101,15 @@
     cursor: pointer;
     font-size: 16px;
     transition: background 0.2s;
-    margin-top: 15px;
+    margin-top: 10px;
     font-family: inherit;
 }
 
-.signup-btn:hover {
+.login-btn:hover {
     background: #3B70F7;
 }
 
-.signup-footer {
+.login-footer {
     margin-top: 25px;
     text-align: center;
     color: #4a5b6a;
@@ -131,7 +132,7 @@
 }
 
 @media (max-width: 480px) {
-    .signup-card {
+    .login-card {
         padding: 30px 20px;
     }
 }

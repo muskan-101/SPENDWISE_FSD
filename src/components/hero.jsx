@@ -1,14 +1,14 @@
 import "./Hero.css"
 
-function Hero(){
-  return(
+function Hero({ onNavigate }) {
+  return (
 
     <section className="hero">
 
       <p className="tag">BUILT FOR STUDENT CLUBS</p>
 
       <h1>
-        Master Your Club's Budget <br/>
+        Master Your Club's Budget <br />
         with <span>Ease</span>
       </h1>
 
@@ -19,9 +19,9 @@ function Hero(){
 
       <div className="buttons">
 
-        <button className="user-btn">USER LOGIN</button>
+        <button className="user-btn" onClick={() => onNavigate('login', 'user')}>USER LOGIN</button>
 
-        <button className="admin-btn">ADMIN LOGIN</button>
+        <button className="admin-btn" onClick={() => onNavigate('login', 'admin')}>ADMIN LOGIN</button>
 
       </div>
 
