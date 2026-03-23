@@ -1,0 +1,74 @@
+.formContainer {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.formContainer h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--header-dark);
+    text-align: center;
+}
+
+.expenseForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.expenseForm label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: -15px;
+}
+
+.expenseForm input,
+.expenseForm select,
+.expenseForm textarea {
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid #e0e6ed;
+    font-size: 15px;
+    background-color: #f8fafd;
+    color: var(--header-dark);
+    width: 100%;
+    transition: all 0.2s ease;
+}
+
+.expenseForm input:focus,
+.expenseForm select:focus,
+.expenseForm textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(59, 112, 247, 0.1);
+}
+
+.expenseForm textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.expenseForm button {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: var(--primary-blue);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.expenseForm button:hover {
+    background: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(59, 112, 247, 0.3);
+}

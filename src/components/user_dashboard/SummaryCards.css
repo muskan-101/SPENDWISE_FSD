@@ -1,0 +1,62 @@
+.summaryContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.message {
+    grid-column: 1 / -1;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--header-dark);
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    font-size: 14px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin: 0;
+}
+
+.card button {
+    margin-top: 20px;
+    background: var(--bg-light);
+    color: var(--primary-blue);
+    border: none;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+}
+
+.card button:hover {
+    background: var(--primary-blue);
+    color: white;
+}

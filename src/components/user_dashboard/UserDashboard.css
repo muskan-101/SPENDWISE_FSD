@@ -1,0 +1,50 @@
+.dashboard {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, var(--bg-light) 0%, #e0ebf5 100%);
+    color: var(--header-dark);
+}
+
+.dashboardMain {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboardContent {
+    padding: 40px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.backBtn {
+    align-self: flex-start;
+    background: none;
+    border: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+.backBtn:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .dashboardContent {
+        padding: 20px;
+    }
+}

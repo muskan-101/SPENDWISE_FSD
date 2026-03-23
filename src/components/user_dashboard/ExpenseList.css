@@ -1,0 +1,62 @@
+.expenseSection {
+    margin-top: 50px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.expenseSection h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: var(--header-dark);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 18px 20px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+    background: #f8fafd;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #fcfdfe;
+}
+
+/* Status variants */
+td:nth-child(3) {
+    font-weight: 600;
+}
+
+.status-approved {
+    color: #10b981;
+}
+
+.status-rejected {
+    color: #f43f5e;
+}
+
+.status-pending {
+    color: #f59e0b;
+}
