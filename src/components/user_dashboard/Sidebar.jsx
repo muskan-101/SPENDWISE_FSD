@@ -1,10 +1,10 @@
 import "./Sidebar.css"
 
-function Sidebar({isOpen, closeSidebar}){
+function Sidebar({ isOpen, closeSidebar, onNavigate }) {
 
-  return(
+  return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
-      
+
       <div className="sidebar-header">
         <h2>Menu</h2>
         <button className="closeBtn" onClick={closeSidebar}>✕</button>
@@ -16,6 +16,7 @@ function Sidebar({isOpen, closeSidebar}){
         <li><span>📋</span> My Expenses</li>
         <li><span>📈</span> Summary</li>
         <li><span>⚙️</span> Settings</li>
+        <li className="logout-item" onClick={() => onNavigate('home')}><span>🚪</span> Logout</li>
       </ul>
 
     </div>

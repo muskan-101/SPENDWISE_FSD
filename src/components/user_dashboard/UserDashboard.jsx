@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar"
 import Footer from "./Footer"
 import ExpenseDashboard from "./ExpenseDashboard"
 
-function UserDashboard() {
+function UserDashboard({ onNavigate }) {
 
   const [showForm, setShowForm] = useState(false)
   const [showExpenses, setShowExpenses] = useState(false)
@@ -37,6 +37,7 @@ function UserDashboard() {
       <Sidebar
         isOpen={sidebarOpen}
         closeSidebar={closeSidebar}
+        onNavigate={onNavigate}
       />
 
       <div className="dashboardContent">

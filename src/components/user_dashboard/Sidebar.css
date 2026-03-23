@@ -14,6 +14,18 @@
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
 }
 
+.sidebar ul li.logout-item {
+    margin-top: 20px;
+    color: #e74c3c;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.sidebar ul li.logout-item:hover {
+    background-color: #fdf2f2;
+}
+
 .sidebar.open {
     left: 0;
 }
