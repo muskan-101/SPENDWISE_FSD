@@ -37,7 +37,7 @@ function Login({ onNavigate, role }) {
       setErrors(validationErrors);
     } else {
       console.log('Login submitted:', { ...formData, role });
-      // Logic for actual login would go here, using the role
+      onNavigate('dashboard');
     }
   };
 

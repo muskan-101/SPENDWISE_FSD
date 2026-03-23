@@ -6,6 +6,7 @@ import Features from "./components/features"
 import Footer from "./components/footer"
 import Login from "./login/Login"
 import Signup from "./login/signup"
+import AdminDashboard from "./dashboard/AdminDashboard"
 
 function App() {
   const [activePage, setActivePage] = useState('home');
@@ -30,6 +31,7 @@ function App() {
       )}
       {activePage === 'login' && <Login onNavigate={navigate} role={role} />}
       {activePage === 'signup' && <Signup onNavigate={navigate} />}
+      {activePage === 'dashboard' && <AdminDashboard onNavigate={navigate} />}
       <Footer />
     </>
   )
