@@ -8,6 +8,9 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    width: 100%;
+    /* Ensure it stretches fully */
+    box-sizing: border-box;
 }
 
 .logo {
@@ -67,6 +70,12 @@
     }
 
     .welcome {
+        display: none;
+    }
+}
+
+@media (min-width: 992px) {
+    .menuBtn {
         display: none;
     }
 }

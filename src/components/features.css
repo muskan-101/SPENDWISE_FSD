@@ -1,86 +1,108 @@
 .features {
-  padding: 100px 5%;
-  background: #f8fafc;
-  display: flex;
-  justify-content: center;
+  padding: 80px 0;
+  /* Changed to 0 on sides for better centering */
+  background: #ffffff;
+  display: flex !important;
+  justify-content: center !important;
+  /* Forces horizontal center */
+  align-items: center !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 .features-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  /* Centers Header and Grid */
+  justify-content: center !important;
+  gap: 40px;
   max-width: 1200px;
-  width: 100%;
+  width: 90%;
+  /* Using 90% instead of 100% gives it breathing room */
+  margin: 0 auto !important;
 }
 
-.features-text {
-  flex: 1;
-  text-align: left;
+.features-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto !important;
+  /* Centers the header box */
 }
 
-.features h2 {
-  font-size: 42px;
-  line-height: 1.2;
-  color: #1e2a38;
-  margin-bottom: 20px;
+.features-header h1,
+.features-header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #1d2b3a; /* Matches hero title */
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .subtitle {
-  font-size: 18px;
-  color: #556575;
-  max-width: 400px;
+  font-size: 16px;
+  color: #4a5b6a; /* Matches hero description */
+  line-height: 1.6;
+  text-align: center;
+  margin: 0 auto;
 }
 
-.cards {
-  flex: 1.5;
-  display: flex;
+.features-grid {
+  display: flex !important;
+  justify-content: center !important;
+  /* Centers the cards within the grid */
+  align-items: stretch;
   flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: flex-start;
+  gap: 30px;
+  width: 100%;
 }
 
-.card {
-  background: white;
-  padding: 25px;
-  flex: 1 1 250px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+.info-card {
+  background: #ffffff;
+  padding: 30px 25px;
+  border: 1px solid #e1e8ed;
+  border-radius: 12px;
+  /* Matches softer visual style */
+  border-top: 4px solid #3B70F7;
+  /* Matches Navbar color */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
+.info-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(59, 112, 247, 0.15);
+  /* Theme accent color glow */
 }
 
-.card h3 {
+.card-title {
   font-size: 20px;
-  margin-bottom: 12px;
+  font-weight: 600;
   color: #1d2b3a;
+  margin-bottom: 15px;
 }
 
-.card p {
-  font-size: 15px;
-  color: #64748b;
+.card-desc {
+  font-size: 14px;
+  color: #4a5b6a;
   line-height: 1.6;
 }
 
-@media (max-width: 992px) {
-  .features-container {
+@media (max-width: 900px) {
+  .features-grid {
     flex-direction: column;
-    text-align: center;
-    gap: 3rem;
+    align-items: center;
   }
 
-  .features-text {
-    text-align: center;
-  }
-
-  .subtitle {
-    margin: 0 auto;
-  }
-
-  .cards {
-    justify-content: center;
+  .info-card {
+    width: 100%;
+    max-width: 400px;
   }
 }

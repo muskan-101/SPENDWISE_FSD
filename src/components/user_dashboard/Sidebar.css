@@ -93,3 +93,14 @@
     background: rgba(255, 59, 59, 0.1);
     color: #ff3b3b;
 }
+
+@media (min-width: 992px) {
+    .sidebar {
+        left: 0 !important;
+        box-shadow: none;
+        border-right: 1px solid rgba(0, 0, 0, 0.05); /* Optional subtle divider */
+    }
+    .closeBtn {
+        display: none !important;
+    }
+}

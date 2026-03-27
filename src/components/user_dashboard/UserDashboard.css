@@ -1,9 +1,23 @@
 .dashboard {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background: linear-gradient(135deg, var(--bg-light) 0%, #e0ebf5 100%);
     color: var(--header-dark);
+}
+
+.dashboardRightPanel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0;
+}
+
+@media (min-width: 992px) {
+    .dashboardRightPanel {
+        flex: 1;
+    }
 }
 
 .dashboardMain {
@@ -13,10 +27,16 @@
 }
 
 .dashboardContent {
+    flex: 1;
     padding: 40px 60px;
-    max-width: 1400px;
-    margin: 0 auto;
+    display: flex;
+    /* Ensure flex is active */
+    flex-direction: column;
+    /* Stack the stat row and the box row */
+    gap: 40px;
+    /* THIS ADDS THE SPACE between the top row and bottom section */
     width: 100%;
+    box-sizing: border-box;
 }
 
 .formWrapper {

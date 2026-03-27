@@ -68,12 +68,20 @@ function AdminDashboard({ onNavigate }) {
 
     return (
         <div className="admin-dashboard">
-            <div className="sidebar">
-                <div className="sidebar-brand" onClick={() => onNavigate('home')}>
+            <header className="admin-topbar">
+                <div className="topbar-brand" onClick={() => onNavigate('home')}>
                     <div className="logo-box"></div>
-                    <h2>SpendWise</h2>
+                    <h2>SPENDWISE</h2>
                 </div>
-                <nav className="sidebar-nav">
+                <div className="user-profile">
+                    <span>Admin User</span>
+                    <div className="avatar"></div>
+                </div>
+            </header>
+
+            <div className="admin-body">
+                <div className="sidebar">
+                    <nav className="sidebar-nav">
                     <button
                         className={activeTab === 'analytics' ? 'active' : ''}
                         onClick={() => setActiveTab('analytics')}
@@ -101,10 +109,6 @@ function AdminDashboard({ onNavigate }) {
             <main className="main-content">
                 <header className="dashboard-header">
                     <h1>{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Dashboard</h1>
-                    <div className="user-profile">
-                        <span>Admin User</span>
-                        <div className="avatar"></div>
-                    </div>
                 </header>
 
                 {activeTab === 'analytics' && isOverspending && (
@@ -232,6 +236,7 @@ function AdminDashboard({ onNavigate }) {
                     )}
                 </section>
             </main>
+            </div>
         </div>
     );
 }

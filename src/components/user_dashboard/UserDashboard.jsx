@@ -10,7 +10,7 @@ import Sidebar from "./Sidebar"
 import Footer from "./Footer"
 import ExpenseDashboard from "./ExpenseDashboard"
 
-function UserDashboard({ onNavigate }) {
+function UserDashboard({ onNavigate, user = { name: "Guest" } }) {
 
   const [showForm, setShowForm] = useState(false)
   const [showExpenses, setShowExpenses] = useState(false)
@@ -28,66 +28,70 @@ function UserDashboard({ onNavigate }) {
 
     <div className="dashboard">
 
-      <DashboardNavbar
-        name="Muskan"
-        openSidebar={openSidebar}
-        openForm={() => setShowForm(true)}
-      />
-
       <Sidebar
         isOpen={sidebarOpen}
         closeSidebar={closeSidebar}
         onNavigate={onNavigate}
       />
 
-      <div className="dashboardContent">
+      <div className="dashboardRightPanel">
+        <DashboardNavbar
+          name={user.name}
+          openSidebar={openSidebar}
+          openForm={() => setShowForm(true)}
+        />
 
-        {showForm ? (
+        <main className="dashboardMain">
+          <div className="dashboardContent">
 
-          <div className="formWrapper">
-            <button
-              className="backBtn"
-              onClick={() => setShowForm(false)}
-            >
-              ← Back to Dashboard
-            </button>
+            {showForm ? (
 
-            <ExpenseForm />
+              <div className="formWrapper">
+                <button
+                  className="backBtn"
+                  onClick={() => setShowForm(false)}
+                >
+                  ← Back to Dashboard
+                </button>
+
+                <ExpenseForm />
+
+              </div>
+
+            ) : showExpenses ? (
+
+              <div className="formWrapper">
+                <button
+                  className="backBtn"
+                  onClick={() => setShowExpenses(false)}
+                >
+                  ← Back to Dashboard
+                </button>
+
+                <ExpenseDashboard />
+
+              </div>
+
+            ) : (
+
+              <>
+                <SummaryCards />
+
+                <FeatureButtons
+                  openForm={() => setShowForm(true)}
+                  openExpenses={() => setShowExpenses(true)}
+                />
+
+                <ExpenseList />
+              </>
+
+            )}
 
           </div>
+        </main>
 
-        ) : showExpenses ? (
-
-          <div className="formWrapper">
-            <button
-              className="backBtn"
-              onClick={() => setShowExpenses(false)}
-            >
-              ← Back to Dashboard
-            </button>
-
-            <ExpenseDashboard />
-
-          </div>
-
-        ) : (
-
-          <>
-            <SummaryCards />
-
-            <FeatureButtons
-              openForm={() => setShowForm(true)}
-              openExpenses={() => setShowExpenses(true)}
-            />
-
-            <ExpenseList />
-          </>
-
-        )}
-
+        <Footer />
       </div>
-
-      <Footer />
 
     </div>
 
