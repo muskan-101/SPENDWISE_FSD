@@ -9,43 +9,63 @@ import ExpenseForm from "./ExpenseForm"
 import Sidebar from "./Sidebar"
 import Footer from "./Footer"
 import ExpenseDashboard from "./ExpenseDashboard"
+import ExpenseDetailView from "./ExpenseDetailView"
 
-function UserDashboard({ onNavigate, user = { name: "Guest" } }) {
+function UserDashboard({ user = { name: "Guest" } }) {
 
   const [showForm, setShowForm] = useState(false)
   const [showExpenses, setShowExpenses] = useState(false)
+  const [showExpenseDetails, setShowExpenseDetails] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
-
-  const openSidebar = () => {
-    setSidebarOpen(true)
-  }
-
-  const closeSidebar = () => {
-    setSidebarOpen(false)
-  }
 
   return (
 
     <div className="dashboard">
 
+      {/* Sidebar */}
       <Sidebar
         isOpen={sidebarOpen}
-        closeSidebar={closeSidebar}
-        onNavigate={onNavigate}
+        closeSidebar={() => setSidebarOpen(false)}
+        openDashboard={() => {
+          setShowForm(false)
+          setShowExpenses(false)
+          setShowExpenseDetails(false)
+        }}
+        openForm={() => {
+          setShowForm(true)
+          setShowExpenses(false)
+          setShowExpenseDetails(false)
+        }}
+        openExpenses={() => {
+          setShowExpenses(true)
+          setShowForm(false)
+          setShowExpenseDetails(false)
+        }}
       />
 
+      {/* Main Panel */}
       <div className="dashboardRightPanel">
+
         <DashboardNavbar
           name={user.name}
-          openSidebar={openSidebar}
-          openForm={() => setShowForm(true)}
+          openSidebar={() => setSidebarOpen(true)}
+          openForm={() => {
+            setShowForm(true)
+            setShowExpenses(false)
+            setShowExpenseDetails(false)
+          }}
+          openExpenses={() => {
+            setShowExpenses(true)
+            setShowForm(false)
+            setShowExpenseDetails(false)
+          }}
         />
 
         <main className="dashboardMain">
           <div className="dashboardContent">
 
-            {showForm ? (
-
+            {/* SHOW FORM */}
+            {showForm && (
               <div className="formWrapper">
                 <button
                   className="backBtn"
@@ -53,13 +73,12 @@ function UserDashboard({ onNavigate, user = { name: "Guest" } }) {
                 >
                   ← Back to Dashboard
                 </button>
-
                 <ExpenseForm />
-
               </div>
+            )}
 
-            ) : showExpenses ? (
-
+            {/* SHOW EXPENSE DASHBOARD */}
+            {showExpenses && !showExpenseDetails && (
               <div className="formWrapper">
                 <button
                   className="backBtn"
@@ -67,30 +86,59 @@ function UserDashboard({ onNavigate, user = { name: "Guest" } }) {
                 >
                   ← Back to Dashboard
                 </button>
-
-                <ExpenseDashboard />
-
+                <ExpenseDashboard 
+                  onViewDetails={() => {
+                    setShowExpenses(false)
+                    setShowExpenseDetails(true)
+                  }}
+                />
               </div>
+            )}
 
-            ) : (
+            {/* SHOW EXPENSE DETAIL VIEW */}
+            {showExpenseDetails && (
+              <div className="formWrapper">
+                <ExpenseDetailView 
+                  onBack={() => {
+                    setShowExpenseDetails(false)
+                    setShowExpenses(true)
+                  }}
+                />
+              </div>
+            )}
 
+            {/* DEFAULT DASHBOARD */}
+            {!showForm && !showExpenses && !showExpenseDetails && (
               <>
                 <SummaryCards />
 
                 <FeatureButtons
-                  openForm={() => setShowForm(true)}
-                  openExpenses={() => setShowExpenses(true)}
+                  openForm={() => {
+                    setShowForm(true)
+                    setShowExpenses(false)
+                    setShowExpenseDetails(false)
+                  }}
+                  openExpenses={() => {
+                    setShowExpenses(true)
+                    setShowForm(false)
+                    setShowExpenseDetails(false)
+                  }}
+                  openExpenseDetails={() => {
+                    setShowExpenseDetails(true)
+                    setShowExpenses(false)
+                    setShowForm(false)
+                  }}
                 />
 
                 <ExpenseList />
               </>
-
             )}
 
           </div>
         </main>
 
         <Footer />
+
       </div>
 
     </div>
