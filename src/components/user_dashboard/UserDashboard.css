@@ -17,6 +17,7 @@
 @media (min-width: 992px) {
     .dashboardRightPanel {
         flex: 1;
+        margin-left: 280px;
     }
 }
 

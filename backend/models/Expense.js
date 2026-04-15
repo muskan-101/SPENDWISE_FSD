@@ -5,10 +5,11 @@ const expenseSchema = new mongoose.Schema({
   amount: { type: Number, required: true },
   category: { type: String, required: true },
   date: { type: String, required: true },
-  description: { type: String }, // Optional description
+  description: { type: String },
   status: { type: String, default: "pending" },
-  billFile: { type: String, required: true } // Added bill tracking
-})
+  submittedBy: { type: String, default: "Unknown User" }, // who submitted it
+  billFile: { type: String, required: true }
+}, { timestamps: true })
 
 // Add indexing for faster query performance on DBMS project showcase
 expenseSchema.index({ category: 1 })

@@ -1,55 +1,185 @@
-.hero{
-  text-align:center;
-  padding:100px 20px;
-  background:#cfe0ea;
+/* ══════════════════════════════════════
+   HERO SECTION — Video Background
+══════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 20px;
 }
 
-.tag{
-  display:inline-block;
-  padding:6px 14px;
-  border-radius:20px;
-  background:#d9e7f3;
-  color:#3b5b8c;
-  font-size:13px;
-  margin-bottom:20px;
+/* ── Video Background ── */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.hero h1{
-  font-size:52px;
-  font-weight:700;
-  color:#1d2b3a;
+/* ── Dark gradient overlay so text is always legible ── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 25, 50, 0.70) 0%,
+    rgba(15, 25, 50, 0.60) 50%,
+    rgba(15, 25, 50, 0.80) 100%
+  );
+  z-index: 1;
 }
 
-.hero span{
-  color:#4f7ee8;
+/* ── Content sits on top ── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  animation: hero-fadein 1.2s ease forwards;
 }
 
-.desc{
-  margin-top:20px;
-  color:#4a5b6a;
-  font-size:18px;
+@keyframes hero-fadein {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.buttons{
-  margin-top:40px;
+/* ── Tag pill ── */
+.tag {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 30px;
+  background: rgba(59, 208, 247, 0.18);
+  border: 1px solid rgba(59, 208, 247, 0.45);
+  color: #3BD5F7;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  backdrop-filter: blur(4px);
 }
 
-.user-btn{
-  padding:14px 28px;
-  border:none;
-  background:#314fa3;
-  color:white;
-  border-radius:10px;
-  margin-right:16px;
-  font-weight:600;
-  cursor:pointer;
+/* ── Heading ── */
+.hero-content h1 {
+  font-size: 58px;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0 0 20px;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
-.admin-btn{
-  padding:14px 28px;
-  border:none;
-  background:#3BD5F7;
-  border-radius:10px;
-  font-weight:600;
-  cursor:pointer;
+.hero-content h1 span {
+  background: linear-gradient(135deg, #3BD5F7 0%, #7C5CBF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sub-description ── */
+.desc {
+  color: rgba(255, 255, 255, 0.80);
+  font-size: 18px;
+  line-height: 1.75;
+  margin: 0 auto 40px;
+  max-width: 600px;
+}
+
+/* ── Buttons ── */
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.user-btn {
+  padding: 16px 36px;
+  border: none;
+  background: linear-gradient(135deg, #3B70F7, #7C5CBF);
+  color: white;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 24px rgba(59, 112, 247, 0.4);
+  letter-spacing: 0.5px;
+}
+
+.user-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(59, 112, 247, 0.5);
+}
+
+.admin-btn {
+  padding: 16px 36px;
+  border: 2px solid rgba(59, 213, 247, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  color: #3BD5F7;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.5px;
+}
+
+.admin-btn:hover {
+  transform: translateY(-3px);
+  background: rgba(59, 213, 247, 0.18);
+  box-shadow: 0 10px 28px rgba(59, 213, 247, 0.3);
+}
+
+/* ── Scroll hint at bottom ── */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: scroll-bounce 2s infinite ease-in-out;
+}
+
+.hero-scroll-hint svg {
+  width: 20px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .desc {
+    font-size: 16px;
+  }
+
+  .user-btn, .admin-btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
 }

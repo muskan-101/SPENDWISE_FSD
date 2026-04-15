@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 18px 60px;
-    background: var(--primary-blue);
+    background: var(--header-dark);
     box-shadow: var(--shadow);
     position: sticky;
     top: 0;

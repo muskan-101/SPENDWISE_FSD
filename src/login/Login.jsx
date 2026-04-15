@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Logo from '../assets/Aimsa.png';
 import './Login.css';
 
 function Login({ onNavigate, role }) {
@@ -37,7 +38,7 @@ function Login({ onNavigate, role }) {
       setErrors(validationErrors);
     } else {
       console.log('Login submitted:', { ...formData, role });
-      onNavigate('dashboard');
+      onNavigate('dashboard', role, formData.emailOrUsername);
     }
   };
 
@@ -47,9 +48,9 @@ function Login({ onNavigate, role }) {
     <div className="login-container">
       <div className="login-card">
         <div className="login-header">
-          <div className="logo-section">
-            <div className="logo-box"></div>
-            <h2>SpendWise</h2>
+          <div className="logo-section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+            <img src={Logo} alt="SpendWise Logo" style={{ height: '48px', width: 'auto' }} />
+            <h2 className="brand-text" style={{ margin: 0, fontSize: '32px', textAlign: 'center' }}>SpendWise</h2>
           </div>
           <p className="welcome-text">Welcome back {displayRole}! Please login to your account.</p>
         </div>

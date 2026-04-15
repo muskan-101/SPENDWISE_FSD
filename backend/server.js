@@ -16,9 +16,33 @@ app.get("/", (req, res) => {
 mongoose.connect("mongodb://127.0.0.1:27017/spendwise")
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err))
-
 const Expense = require("./models/Expense")
+const Event = require("./models/Event")
 
+// ==========================================
+// EVENTS: Create & Read Events
+// ==========================================
+app.post("/api/events", async (req, res) => {
+  try {
+    const event = new Event(req.body)
+    await event.save()
+    res.status(201).json({ message: "Event Added", event })
+  } catch (err) {
+    if (err.code === 11000) {
+      return res.status(400).json({ error: "Event with this name already exists." })
+    }
+    res.status(500).json({ error: err.message })
+  }
+})
+
+app.get("/api/events", async (req, res) => {
+  try {
+    const events = await Event.find().sort({ createdAt: -1 })
+    res.json(events)
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
 // ==========================================
 // CREATE: Add Expense
 // ==========================================
@@ -82,7 +106,7 @@ app.get("/api/expenses", async (req, res) => {
 // ==========================================
 app.get("/api/expenses/stats", async (req, res) => {
   try {
-    const { search, category, startDate, endDate } = req.query
+    const { search, category, startDate, endDate, event } = req.query
     
     // Aggregation Match step (same logic as basic find)
     let matchQuery = {}
@@ -93,6 +117,7 @@ app.get("/api/expenses/stats", async (req, res) => {
       ]
     }
     if (category && category !== "All") matchQuery.category = category
+    if (event && event !== "All") matchQuery.event = event
     if (startDate || endDate) {
       matchQuery.date = {}
       if (startDate) matchQuery.date.$gte = startDate
@@ -132,9 +157,53 @@ app.get("/api/expenses/stats", async (req, res) => {
       }
     ])
 
+    // 3. Spenders Breakdown
+    const spendersBreakdown = await Expense.aggregate([
+      { $match: matchQuery },
+      {
+        $group: {
+          _id: { $ifNull: ["$submittedBy", "Unknown User"] },
+          totalAmount: { $sum: "$amount" },
+          transactions: { $sum: 1 }
+        }
+      },
+      { $sort: { totalAmount: -1 } },
+      { $limit: 10 },
+      {
+        $project: {
+          name: "$_id",
+          amount: "$totalAmount",
+          transactions: 1,
+          _id: 0
+        }
+      }
+    ])
+
+    // 4. Status Breakdown (Funnel)
+    const statusBreakdown = await Expense.aggregate([
+      { $match: matchQuery },
+      {
+        $group: {
+          _id: { $ifNull: ["$status", "pending"] },
+          count: { $sum: 1 },
+          amount: { $sum: "$amount" }
+        }
+      },
+      {
+        $project: {
+          status: "$_id",
+          count: 1,
+          amount: 1,
+          _id: 0
+        }
+      }
+    ])
+
     res.json({
-      overall: overallStats.length > 0 ? overallStats[0] : { totalSpending: 0, highestExpense: 0, transactions: 0 },
-      breakdown: categoryBreakdown
+      overall: overallStats.length > 0 ? overallStats[0] : { totalSpending: 0, highestExpense: 0, transactions: 0, averageExpense: 0 },
+      breakdown: categoryBreakdown,
+      spenders: spendersBreakdown,
+      status: statusBreakdown
     })
   } catch (err) {
     res.status(500).json({ error: err.message })

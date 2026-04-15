@@ -11,21 +11,23 @@ import Footer from "./Footer"
 import ExpenseDashboard from "./ExpenseDashboard"
 import ExpenseDetailView from "./ExpenseDetailView"
 
-function UserDashboard({ user = { name: "Guest" } }) {
+function UserDashboard({ user = { name: "Guest" }, onNavigate }) {
 
   const [showForm, setShowForm] = useState(false)
   const [showExpenses, setShowExpenses] = useState(false)
   const [showExpenseDetails, setShowExpenseDetails] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
 
   return (
 
-    <div className="dashboard">
+    <div className="dashboard" style={darkMode ? { background: '#1a1f2e', color: '#e8edf5' } : {}}>
 
       {/* Sidebar */}
       <Sidebar
         isOpen={sidebarOpen}
         closeSidebar={() => setSidebarOpen(false)}
+        onNavigate={onNavigate}
         openDashboard={() => {
           setShowForm(false)
           setShowExpenses(false)
@@ -49,6 +51,8 @@ function UserDashboard({ user = { name: "Guest" } }) {
         <DashboardNavbar
           name={user.name}
           openSidebar={() => setSidebarOpen(true)}
+          darkMode={darkMode}
+          toggleTheme={() => setDarkMode(prev => !prev)}
           openForm={() => {
             setShowForm(true)
             setShowExpenses(false)
@@ -73,7 +77,7 @@ function UserDashboard({ user = { name: "Guest" } }) {
                 >
                   ← Back to Dashboard
                 </button>
-                <ExpenseForm />
+                <ExpenseForm user={user} />
               </div>
             )}
 

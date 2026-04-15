@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 18px 60px;
-  background: #3B70F7;
+  background: var(--header-dark);
 }
 
 .logo-section {

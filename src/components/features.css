@@ -1,7 +1,6 @@
 .features {
   padding: 80px 0;
-  /* Changed to 0 on sides for better centering */
-  background: #ffffff;
+  background: linear-gradient(180deg, #e2edf7 0%, #f0f6ff 100%);
   display: flex !important;
   justify-content: center !important;
   /* Forces horizontal center */
@@ -58,7 +57,7 @@
 }
 
 .info-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.75);
   padding: 30px 25px;
   border: 1px solid #e1e8ed;
   border-radius: 12px;

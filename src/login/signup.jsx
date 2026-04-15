@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Logo from '../assets/Aimsa.png';
 import './signup.css';
 
 function Signup({ onNavigate }) {
@@ -59,9 +60,9 @@ function Signup({ onNavigate }) {
         <div className="signup-container">
             <div className="signup-card">
                 <div className="signup-header">
-                    <div className="logo-section">
-                        <div className="logo-box"></div>
-                        <h2>SpendWise</h2>
+                    <div className="logo-section" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
+                        <img src={Logo} alt="SpendWise Logo" style={{ height: '48px', width: 'auto' }} />
+                        <h2 className="brand-text" style={{ margin: 0, fontSize: '32px', textAlign: 'center' }}>SpendWise</h2>
                     </div>
                     <p className="welcome-text">Create an account to start managing your expenses.</p>
                 </div>

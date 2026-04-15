@@ -1,13 +1,14 @@
 import "./ExpenseForm.css"
 import { useState } from "react"
 
-function ExpenseForm({ onFormSubmit = () => {} }) {
+function ExpenseForm({ onFormSubmit = () => {}, user = { name: 'Unknown User' } }) {
   const [eventName, setEventName] = useState("")
   const [category, setCategory] = useState("")
   const [otherCategory, setOtherCategory] = useState("")
   const [amount, setAmount] = useState("")
   const [date, setDate] = useState("")
   const [description, setDescription] = useState("")
+  const MAX_DESC = 300
   const [billFile, setBillFile] = useState(null)
 
   const handleFileChange = (e) => {
@@ -40,8 +41,9 @@ function ExpenseForm({ onFormSubmit = () => {} }) {
       category: finalCategory,
       amount: Number(amount),
       date: date,
-      description: description, // Explicitly pass the description to the schema
-      status: "pending", // default
+      description: description,
+      status: "pending",
+      submittedBy: user.name || 'Unknown User',
       billFile: billFile
     }
 
@@ -133,8 +135,18 @@ function ExpenseForm({ onFormSubmit = () => {} }) {
         <textarea 
           placeholder="Explain the expense"
           value={description}
+          maxLength={MAX_DESC}
           onChange={e => setDescription(e.target.value)}
+          style={{ resize: 'vertical', minHeight: '90px' }}
         ></textarea>
+        <div style={{
+          display: 'flex', justifyContent: 'flex-end',
+          fontSize: '12px', fontWeight: 600,
+          color: description.length >= MAX_DESC ? '#e74c3c' : description.length >= MAX_DESC * 0.8 ? '#e67e22' : '#94a3b8',
+          marginTop: '-14px'
+        }}>
+          {description.length} / {MAX_DESC}
+        </div>
 
         <label>Upload Bill * (Image or PDF)</label>
         <input 
