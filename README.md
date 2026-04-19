@@ -1,159 +1,261 @@
-# 💰 SpendWise – Smart Budget Manager for University Clubs
+# SpendWise
 
-## 📌 Overview
-
-SpendWise is a web application designed to help **university clubs manage their budgets, track expenses, and maintain financial transparency**.
-It provides a simple and intuitive interface where club members can monitor spending, organize funds, and avoid exceeding allocated budgets.
-
-This project was developed as part of **Artimas**, focusing on solving real financial management problems faced by student organizations.
+**SpendWise** is a full-stack expense management web application designed for organizations and teams to submit, track, and analyze expenses in real time. It features a dual-role architecture — a user-facing submission and tracking interface alongside a comprehensive admin analytics dashboard.
 
 ---
 
-## 🚩 Problem Statement
+## Table of Contents
 
-University clubs often face challenges such as:
-
-* Poor tracking of expenses
-* Lack of transparency in spending
-* Difficulty managing budgets across multiple events
-* Manual tracking using spreadsheets
-
-SpendWise solves these issues by providing a **centralized digital budget tracking system**.
-
----
-
-##  Features
-
-### 🧾 Expense Tracking
-
-* Record and monitor club expenses
-* Categorize spending for better analysis
-
-### 📊 Budget Management
-
-* Set a fixed budget for events or activities
-* Track remaining funds in real time
-
-### 📈 Financial Transparency
-
-* Members can view how funds are being used
-* Helps maintain accountability within the club
-
-### 🎯 User-Friendly Interface
-
-* Simple dashboard
-* Clean and responsive design
-* Easy navigation
-
-### 🧩 Modular Components
-
-The application is built using reusable React components such as:
-
-* Navbar
-* Landing Page
-* Features Section
-* Footer
+- [Overview](#overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [API Reference](#api-reference)
+- [Database Design](#database-design)
+- [Scripts](#scripts)
 
 ---
 
-## 🛠️ Tech Stack
+## Overview
 
-**Frontend**
+SpendWise provides a streamlined workflow for expense reporting within an organization. Users can log expenses under specific events, attach bill images, and monitor approval statuses. Administrators have access to aggregated analytics, per-event breakdowns, and full control over expense records.
 
-* React.js
-* HTML5
-* CSS3
-* JavaScript
-
-**Build Tool**
-
-* Vite
-
-**Version Control**
-
-* Git & GitHub
+The project was built as a Full Stack Development Lab (FSDL) project and intentionally demonstrates advanced MongoDB features including aggregation pipelines, compound indexing, and dynamic query construction.
 
 ---
 
-## 🏗️ Project Structure
+## Features
+
+### User Interface
+- Expense submission form with event selection, category tagging, amount, date, and mandatory bill upload (base64 encoded)
+- Character-limited description field with live word counter
+- Personal expense dashboard with real-time status tracking (Pending / Approved / Rejected)
+- Detailed expense view with bill preview
+- Light/Dark theme toggle
+
+### Admin Dashboard
+- Aggregate statistics: total spending, highest expense, average spend, total transactions
+- Category-wise and spender-wise spending breakdown
+- Expense status funnel (Pending / Approved / Rejected counts)
+- Event management panel for creating and listing events
+- Full expense list with approval/rejection controls and delete functionality
+- Advanced filtering: search by keyword, filter by category, filter by date range, sort by amount or date
+
+### Landing Page
+- Hero section with branding
+- Features overview section
+- Interactive story section
+- Footer
+
+---
+
+## Tech Stack
+
+### Frontend
+| Technology | Purpose |
+|---|---|
+| React 19 | UI framework |
+| Vite 7 | Build tool and dev server |
+| Axios | HTTP client for API calls |
+| Vanilla CSS | Styling with dark/light theme support |
+
+### Backend
+| Technology | Purpose |
+|---|---|
+| Node.js | Runtime environment |
+| Express 5 | REST API framework |
+| Mongoose 9 | MongoDB ODM |
+| CORS | Cross-origin request handling |
+
+### Database
+| Technology | Purpose |
+|---|---|
+| MongoDB (local) | Primary data store |
+| Mongoose Aggregation Pipelines | Statistics and analytics |
+| Mongoose Indexing | Query performance optimization |
+
+---
+
+## Project Structure
 
 ```
-SPENDWISE
-│
-├── public
-│
-├── src
-│   ├── components
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── Features.jsx
-│   │   └── Footer.jsx
-│   │
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-│
-├── package.json
+SPENDWISE_FSD/
+├── backend/
+│   ├── models/
+│   │   ├── Expense.js          # Expense schema with indexing
+│   │   └── Event.js            # Event schema
+│   └── server.js               # Express server with all API routes
+├── src/
+│   ├── components/
+│   │   ├── hero.jsx            # Landing page hero section
+│   │   ├── features.jsx        # Features overview section
+│   │   ├── Story.jsx           # Interactive story section
+│   │   ├── navbar.jsx          # Top navigation bar
+│   │   └── footer.jsx          # Footer
+│   │   └── user_dashboard/
+│   │       ├── UserDashboard.jsx
+│   │       ├── ExpenseForm.jsx         # Expense submission form
+│   │       ├── ExpenseDashboard.jsx    # Personal expense list view
+│   │       ├── ExpenseDetailView.jsx   # Single expense detail/bill view
+│   │       ├── ExpenseList.jsx
+│   │       ├── SummaryCards.jsx
+│   │       ├── Sidebar.jsx
+│   │       ├── DashboardNavbar.jsx
+│   │       └── FeatureButtons.jsx
+│   ├── dashboard/
+│   │   ├── AdminDashboard.jsx          # Admin expense management
+│   │   ├── AdminAnalytics.jsx          # Charts and aggregate stats
+│   │   └── AdminEvents.jsx             # Event creation and listing
+│   ├── login/
+│   │   └── Login.jsx                   # Login page
+│   ├── App.jsx                         # Root component and routing
+│   └── main.jsx                        # React entry point
+├── index.html
 ├── vite.config.js
-└── README.md
+└── package.json
 ```
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
-### 1️⃣ Clone the repository
+### Prerequisites
 
-```
-git clone https://github.com/muskan-101/SpendWise.git
-```
+- [Node.js](https://nodejs.org/) v18 or higher
+- [MongoDB](https://www.mongodb.com/try/download/community) running locally on port `27017`
 
-### 2️⃣ Navigate to the project folder
+### Installation
 
-```
-cd SpendWise
-```
+1. **Clone the repository**
 
-### 3️⃣ Install dependencies
+   ```bash
+   git clone <repository-url>
+   cd SPENDWISE_FSD
+   ```
 
-```
-npm install
-```
+2. **Install frontend dependencies**
 
-### 4️⃣ Run the development server
+   ```bash
+   npm install
+   ```
 
-```
-npm run dev
-```
+3. **Install backend dependencies**
 
-The application will start on:
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
 
-```
-http://localhost:5173
-```
+### Running the Application
+
+1. **Start MongoDB** — Ensure MongoDB is running locally on `mongodb://127.0.0.1:27017`.
+
+2. **Start the backend server**
+
+   ```bash
+   cd backend
+   node server.js
+   ```
+
+   The API server starts on `http://localhost:5000`.
+
+3. **Start the frontend dev server**
+
+   ```bash
+   npm run dev
+   ```
+
+   The app opens at `http://localhost:5173` (or the next available port).
 
 ---
 
-## 🎯 Future Improvements
+## API Reference
 
-* User authentication for club members
-* Expense analytics and visual charts
-* Event-wise budget tracking
-* Integration with payment systems
-* AI-based spending insights
+All routes are prefixed with `/api`.
+
+### Events
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/events` | Create a new event |
+| `GET` | `/api/events` | Get all events (sorted by newest) |
+
+### Expenses
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/expenses` | Submit a new expense |
+| `GET` | `/api/expenses` | Get expenses with optional filters |
+| `GET` | `/api/expenses/stats` | Get aggregated statistics |
+| `PUT` | `/api/expenses/:id/status` | Update expense approval status |
+| `DELETE` | `/api/expenses/:id` | Delete an expense by ID |
+
+#### Query Parameters for `GET /api/expenses`
+
+| Parameter | Type | Description |
+|---|---|---|
+| `search` | string | Full-text search across event and category fields (`$regex`) |
+| `category` | string | Filter by category (exact match) |
+| `startDate` | string | Filter expenses on or after this date (`$gte`) |
+| `endDate` | string | Filter expenses on or before this date (`$lte`) |
+| `sort` | string | Sort order: `newest` (default), `oldest`, `highest`, `lowest` |
 
 ---
 
-## 👩‍💻 Contributors
+## Database Design
 
-* **Muskan Thakur**
-* **Arya Dhumal**
-  PCCOE Pune
-  GitHub: https://github.com/muskan-101
+### Expense Schema
+
+| Field | Type | Required | Notes |
+|---|---|---|---|
+| `event` | String | Yes | Event the expense belongs to |
+| `amount` | Number | Yes | Expense amount |
+| `category` | String | Yes | Expense category |
+| `date` | String | Yes | Date of expense |
+| `description` | String | No | Optional description (character limited in UI) |
+| `status` | String | No | `pending` / `approved` / `rejected` (default: `pending`) |
+| `submittedBy` | String | No | Name of the submitting user |
+| `billFile` | String | Yes | Base64-encoded bill image |
+| `createdAt` | Date | Auto | Mongoose timestamp |
+| `updatedAt` | Date | Auto | Mongoose timestamp |
+
+**Indexes applied for performance:**
+- `category` — ascending index for category filter queries
+- `date` — descending index for date-sorted queries
+- `event` — text index for full-text search
+
+### Aggregation Pipelines (used in `/api/expenses/stats`)
+
+- **Overall stats** — `$group` with `$sum`, `$max`, `$avg` for total, highest, and average spend
+- **Category breakdown** — `$group` by category + `$sort` + `$project`
+- **Spenders breakdown** — `$group` by `submittedBy` + `$sort` + `$limit 10`
+- **Status funnel** — `$group` by status with counts and amounts
 
 ---
 
-## 📄 License
+## Scripts
 
-This project is developed for **educational and university use**.
+### Frontend (`/`)
+
+| Script | Command | Description |
+|---|---|---|
+| Dev server | `npm run dev` | Start Vite development server |
+| Build | `npm run build` | Build for production |
+| Preview | `npm run preview` | Preview production build locally |
+| Lint | `npm run lint` | Run ESLint |
+
+### Backend (`/backend`)
+
+| Script | Command | Description |
+|---|---|---|
+| Start | `node server.js` | Start the Express API server |
+
+---
+
+## Notes
+
+- Bill files are stored as base64 strings in MongoDB. For production use, consider migrating to a file storage service such as AWS S3 or Cloudinary.
+- Authentication is handled through a simple login interface. For production deployment, integrate a proper authentication library and session management.
+- MongoDB must be running locally before starting the backend server.
